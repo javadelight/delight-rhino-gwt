@@ -18,12 +18,15 @@ class RhinoConcurrency {
 		val id = idCounter.incrementAndGet
 		
 		new Timer().schedule([
-			
 			executor.apply(fn)
 		], delay)
 		
 		id
 		
 	} 
+	
+	new(Closure<Runnable> executor) {
+		this.executor = executor
+	}
 	
 }

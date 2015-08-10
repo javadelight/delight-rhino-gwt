@@ -30,4 +30,8 @@ public class RhinoConcurrency {
     }
     return _xblockexpression;
   }
+  
+  public RhinoConcurrency(final Closure<Runnable> executor) {
+    this.executor = executor;
+  }
 }

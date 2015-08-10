@@ -5,7 +5,7 @@ import java.util.HashMap
 import java.util.Timer
 import java.util.concurrent.atomic.AtomicInteger
 
-class RhinoConcurrency {
+final class RhinoConcurrency {
 	
 	Closure<Runnable> executor;
 	

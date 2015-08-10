@@ -11,7 +11,7 @@ class RhinoGwt {
 	/**
 	 * Add a basic GWT runtime environment to the global scope of the provided sandbox.
 	 */
-	def injectGwtRuntimeEnvironment(RhinoSandbox sandbox, Closure<Runnable> operationsRunner) {
+	static def injectGwtRuntimeEnvironment(RhinoSandbox sandbox, Closure<Runnable> operationsRunner) {
 		
 		
 		sandbox.allow(Runnable)
@@ -22,7 +22,6 @@ class RhinoGwt {
 		
 		// set up timers
 		sandbox.evalWithGlobalScope('''
-		
 		
 		setTimeout = function (fn,delay) {
 		    var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});

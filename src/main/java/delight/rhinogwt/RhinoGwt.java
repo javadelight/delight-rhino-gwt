@@ -12,7 +12,7 @@ public class RhinoGwt {
   /**
    * Add a basic GWT runtime environment to the global scope of the provided sandbox.
    */
-  public Object injectGwtRuntimeEnvironment(final RhinoSandbox sandbox, final Closure<Runnable> operationsRunner) {
+  public static Object injectGwtRuntimeEnvironment(final RhinoSandbox sandbox, final Closure<Runnable> operationsRunner) {
     Object _xblockexpression = null;
     {
       sandbox.allow(Runnable.class);
@@ -22,7 +22,6 @@ public class RhinoGwt {
       RhinoConcurrency _rhinoConcurrency = new RhinoConcurrency(operationsRunner);
       sandbox.inject("concurrency", _rhinoConcurrency);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.newLine();
       _builder.newLine();
       _builder.append("setTimeout = function (fn,delay) {");
       _builder.newLine();

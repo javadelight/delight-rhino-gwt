@@ -8,7 +8,7 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("all")
-public class RhinoConcurrency {
+public final class RhinoConcurrency {
   private Closure<Runnable> executor;
   
   private HashMap<Integer, Timer> ids;

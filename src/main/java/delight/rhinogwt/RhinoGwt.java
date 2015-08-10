@@ -1,5 +1,7 @@
 package delight.rhinogwt;
 
+import delight.functional.Closure;
+import delight.rhinogwt.internal.RhinoConcurrency;
 import delight.rhinogwt.internal.RhinoConsole;
 import delight.rhinosandox.RhinoSandbox;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -10,33 +12,31 @@ public class RhinoGwt {
   /**
    * Add a basic GWT runtime environment to the global scope of the provided sandbox.
    */
-  public Object injectGwtRuntimeEnvironment(final RhinoSandbox sandbox, final Runnable operationsRunner) {
+  public Object injectGwtRuntimeEnvironment(final RhinoSandbox sandbox, final Closure<Runnable> operationsRunner) {
     Object _xblockexpression = null;
     {
-      RhinoConsole _rhinoConsole = new RhinoConsole();
-      sandbox.inject("console", _rhinoConsole);
       sandbox.allow(Runnable.class);
       sandbox.allow(JavaAdapter.class);
+      RhinoConsole _rhinoConsole = new RhinoConsole();
+      sandbox.inject("console", _rhinoConsole);
+      RhinoConcurrency _rhinoConcurrency = new RhinoConcurrency(operationsRunner);
+      sandbox.inject("concurrency", _rhinoConcurrency);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("// based on http://stackoverflow.com/questions/2261705/how-to-run-a-javascript-function-asynchronously-without-using-settimeout");
-      _builder.newLine();
-      _builder.append("var executor = timerExecutor;");
-      _builder.newLine();
-      _builder.append("var counter = 1;");
-      _builder.newLine();
-      _builder.append("var ids = {};");
       _builder.newLine();
       _builder.newLine();
       _builder.append("setTimeout = function (fn,delay) {");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("var id = counter++;");
+      _builder.append("var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("ids[id] = executor.schedule(runnable, delay, ");
       _builder.newLine();
-      _builder.append("        ");
-      _builder.append("java.util.concurrent.TimeUnit.MILLISECONDS);");
+      _builder.append("    ");
+      _builder.append("var id = concurrency.setTimeout(fn, delay);");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("    ");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("return id;");
@@ -47,30 +47,23 @@ public class RhinoGwt {
       _builder.append("clearTimeout = function (id) {");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("ids[id].cancel(false);");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("executor.purge();");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("delete ids[id];");
+      _builder.append("concurrency.clear(id);");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("setInterval = function (fn,delay) {");
+      _builder.append("setInterval = function (fn,interval) {");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("var id = counter++;");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("ids[id] = executor.scheduleAtFixedRate(runnable, delay, delay, ");
       _builder.newLine();
-      _builder.append("        ");
-      _builder.append("java.util.concurrent.TimeUnit.MILLISECONDS);");
+      _builder.append("\t");
+      _builder.append("var id = concurrency.setInterval(fn,interval);");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("    ");
       _builder.append("return id;");

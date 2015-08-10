@@ -1,15 +1,26 @@
 package delight.rhinogwt.internal
 
+import java.util.HashMap
 import java.util.Timer
-import java.util.TimerTask
+import java.util.concurrent.atomic.AtomicInteger
 
 class RhinoConcurrency {
 	
 	Runnable executor;
 	
-	def String setTimeout(Runnable fn, int delay) {
+	HashMap<Integer, Timer> ids;
+	
+	AtomicInteger idCounter;
+	
+	def int setTimeout(Runnable fn, int delay) {
 		
-		new Timer().schedule([], delay)
+		val id = idCounter.incrementAndGet
+		
+		new Timer().schedule([
+			fn.run()
+		], delay)
+		
+		id
 		
 	} 
 	

@@ -29,15 +29,16 @@ class RhinoConcurrency {
 		
 	} 
 	
-	def clearTimeout(int id) {
+	def clear(int id) {
 		val timer = ids.get(id)
 		
 		if (timer != null) {
 			ids.remove(id)
-			timer.
+			timer.cancel
 		}
-		 
 	}
+	
+	
 	
 	new(Closure<Runnable> executor) {
 		this.executor = executor

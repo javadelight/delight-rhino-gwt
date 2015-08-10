@@ -1,5 +1,6 @@
 package delight.rhinogwt.internal;
 
+import com.google.common.base.Objects;
 import delight.functional.Closure;
 import java.util.HashMap;
 import java.util.Timer;
@@ -33,9 +34,13 @@ public class RhinoConcurrency {
     return _xblockexpression;
   }
   
-  public Object clearTimeout(final int id) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \'}\'");
+  public void clear(final int id) {
+    final Timer timer = this.ids.get(Integer.valueOf(id));
+    boolean _notEquals = (!Objects.equal(timer, null));
+    if (_notEquals) {
+      this.ids.remove(Integer.valueOf(id));
+      timer.cancel();
+    }
   }
   
   public RhinoConcurrency(final Closure<Runnable> executor) {

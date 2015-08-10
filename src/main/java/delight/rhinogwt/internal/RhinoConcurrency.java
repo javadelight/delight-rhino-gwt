@@ -1,5 +1,6 @@
 package delight.rhinogwt.internal;
 
+import delight.functional.Closure;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -7,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("all")
 public class RhinoConcurrency {
-  private Runnable executor;
+  private Closure<Runnable> executor;
   
   private HashMap<Integer, Timer> ids;
   
@@ -21,7 +22,7 @@ public class RhinoConcurrency {
       final TimerTask _function = new TimerTask() {
         @Override
         public void run() {
-          fn.run();
+          RhinoConcurrency.this.executor.apply(fn);
         }
       };
       _timer.schedule(_function, delay);

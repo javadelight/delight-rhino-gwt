@@ -1,12 +1,13 @@
 package delight.rhinogwt.internal
 
+import delight.functional.Closure
 import java.util.HashMap
 import java.util.Timer
 import java.util.concurrent.atomic.AtomicInteger
 
 class RhinoConcurrency {
 	
-	Runnable executor;
+	Closure<Runnable> executor;
 	
 	HashMap<Integer, Timer> ids;
 	
@@ -17,7 +18,8 @@ class RhinoConcurrency {
 		val id = idCounter.incrementAndGet
 		
 		new Timer().schedule([
-			fn.run()
+			
+			executor.apply(fn)
 		], delay)
 		
 		id

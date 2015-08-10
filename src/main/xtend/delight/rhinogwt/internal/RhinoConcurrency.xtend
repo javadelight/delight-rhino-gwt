@@ -17,13 +17,27 @@ class RhinoConcurrency {
 		
 		val id = idCounter.incrementAndGet
 		
-		new Timer().schedule([
+		val timer = new Timer()
+		timer.schedule([
+			ids.remove(id)
 			executor.apply(fn)
 		], delay)
+		
+		ids.put(id, timer)
 		
 		id
 		
 	} 
+	
+	def clearTimeout(int id) {
+		val timer = ids.get(id)
+		
+		if (timer != null) {
+			ids.remove(id)
+			timer.
+		}
+		 
+	}
 	
 	new(Closure<Runnable> executor) {
 		this.executor = executor

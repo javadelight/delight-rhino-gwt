@@ -17,7 +17,7 @@ class RhinoConcurrency {
 		
 		val id = idCounter.incrementAndGet
 		
-		val timer = new Timer()
+		val timer = new Timer
 		timer.schedule([
 			ids.remove(id)
 			executor.apply(fn)
@@ -28,6 +28,18 @@ class RhinoConcurrency {
 		id
 		
 	} 
+	
+	def void setInterval(Runnable fn, int rate) {
+		val id = idCounter.incrementAndGet
+		
+		val timer = new Timer
+		
+		timer.scheduleAtFixedRate([
+			executor.apply(fn)
+		], 1, rate)
+		
+		ids.put(id, timer)
+	}
 	
 	def clear(int id) {
 		val timer = ids.get(id)

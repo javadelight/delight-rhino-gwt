@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicInteger
 
 final class RhinoConcurrency {
 	
+
+	
 	Closure<Runnable> executor;
 	
 	HashMap<Integer, Timer> ids;
@@ -14,6 +16,8 @@ final class RhinoConcurrency {
 	AtomicInteger idCounter;
 	
 	def int setTimeout(Runnable fn, int delay) {
+		
+		
 		
 		val id = idCounter.incrementAndGet
 		

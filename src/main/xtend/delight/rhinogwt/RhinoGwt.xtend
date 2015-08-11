@@ -24,6 +24,7 @@ class RhinoGwt {
 		sandbox.evalWithGlobalScope('''
 		
 		setTimeout = function (fn,delay) {
+		    console.log('here');
 		    var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});
 		    
 		    var id = concurrency.setTimeout(fn, delay);

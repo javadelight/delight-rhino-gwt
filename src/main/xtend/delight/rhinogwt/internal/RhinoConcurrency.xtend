@@ -22,7 +22,9 @@ final class RhinoConcurrency {
 		val timer = new Timer
 		timer.schedule([
 			ids.remove(id)
+			println('execute')
 			executor.apply(fn)
+			println('did it')
 		], delay)
 		
 		ids.put(id, timer)
@@ -57,6 +59,7 @@ final class RhinoConcurrency {
 	new(Closure<Runnable> executor) {
 		this.executor = executor
 		this.ids = new HashMap
+		this.idCounter = new AtomicInteger(0)
 	}
 	
 }

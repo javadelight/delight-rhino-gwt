@@ -26,7 +26,9 @@ public final class RhinoConcurrency {
         @Override
         public void run() {
           RhinoConcurrency.this.ids.remove(Integer.valueOf(id));
+          InputOutput.<String>println("execute");
           RhinoConcurrency.this.executor.apply(fn);
+          InputOutput.<String>println("did it");
         }
       };
       timer.schedule(_function, delay);
@@ -62,5 +64,7 @@ public final class RhinoConcurrency {
     this.executor = executor;
     HashMap<Integer, Timer> _hashMap = new HashMap<Integer, Timer>();
     this.ids = _hashMap;
+    AtomicInteger _atomicInteger = new AtomicInteger(0);
+    this.idCounter = _atomicInteger;
   }
 }

@@ -32,6 +32,7 @@ public class RhinoGwt {
       _builder.append("var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});");
       _builder.newLine();
       _builder.append("    ");
+      _builder.append("console.log(\'runnalbe \'+runnable); ");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("var id = concurrency.setTimeout(fn, delay);");

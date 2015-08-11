@@ -58,5 +58,7 @@ public final class RhinoConcurrency {
   
   public RhinoConcurrency(final Closure<Runnable> executor) {
     this.executor = executor;
+    HashMap<Integer, Timer> _hashMap = new HashMap<Integer, Timer>();
+    this.ids = _hashMap;
   }
 }

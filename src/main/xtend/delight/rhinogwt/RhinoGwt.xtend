@@ -26,7 +26,7 @@ class RhinoGwt {
 		setTimeout = function (fn,delay) {
 		    console.log('here');
 		    var runnable = new JavaAdapter(java.lang.Runnable, {run: fn});
-		    
+		    console.log('runnalbe '+runnable); 
 		    var id = concurrency.setTimeout(fn, delay);
 		    
 		    

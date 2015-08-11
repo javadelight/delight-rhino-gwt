@@ -7,24 +7,24 @@ import java.util.concurrent.atomic.AtomicInteger
 
 final class RhinoConcurrency {
 		
-	Closure<Runnable> executor;
+	final Closure<Runnable> executor
 	
-	HashMap<Integer, Timer> ids;
+	final HashMap<Integer, Timer> ids
 	
-	AtomicInteger idCounter;
+	final AtomicInteger idCounter
 	
 	def int setTimeout(Runnable fn, int delay) {
 		
-		println("here "+fn+" "+delay)
+	
 
 		val id = idCounter.incrementAndGet
 		
 		val timer = new Timer
 		timer.schedule([
 			ids.remove(id)
-			println('execute')
+			
 			executor.apply(fn)
-			println('did it')
+			
 		], delay)
 		
 		ids.put(id, timer)

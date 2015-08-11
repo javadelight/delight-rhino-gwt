@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public final class RhinoConcurrency {
@@ -18,6 +19,7 @@ public final class RhinoConcurrency {
   public int setTimeout(final Runnable fn, final int delay) {
     int _xblockexpression = (int) 0;
     {
+      InputOutput.<String>println(((("here " + fn) + " ") + Integer.valueOf(delay)));
       final int id = this.idCounter.incrementAndGet();
       final Timer timer = new Timer();
       final TimerTask _function = new TimerTask() {

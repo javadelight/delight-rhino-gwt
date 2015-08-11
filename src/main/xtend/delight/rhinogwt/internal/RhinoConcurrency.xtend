@@ -14,6 +14,8 @@ final class RhinoConcurrency {
 	AtomicInteger idCounter;
 	
 	def int setTimeout(Runnable fn, int delay) {
+		
+		println("here "+fn+" "+delay)
 
 		val id = idCounter.incrementAndGet
 		

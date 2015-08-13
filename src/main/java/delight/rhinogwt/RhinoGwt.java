@@ -115,7 +115,10 @@ public class RhinoGwt {
       _builder_1.append("hostname: \"localhost\"\t");
       _builder_1.newLine();
       _builder_1.append("\t");
-      _builder_1.append("}");
+      _builder_1.append("},");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("console: console");
       _builder_1.newLine();
       _builder_1.append("};");
       _builder_1.newLine();

@@ -67,7 +67,8 @@ class RhinoGwt {
 				clearInterval: clearInterval,
 				location: {
 					hostname: "localhost"	
-				}
+				},
+				console: console
 			};
 			
 			var window = $wnd;

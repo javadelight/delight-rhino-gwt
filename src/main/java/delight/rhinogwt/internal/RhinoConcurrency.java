@@ -34,17 +34,22 @@ public final class RhinoConcurrency {
     return _xblockexpression;
   }
   
-  public void setInterval(final Runnable fn, final int rate) {
-    final int id = this.idCounter.incrementAndGet();
-    final Timer timer = new Timer();
-    final TimerTask _function = new TimerTask() {
-      @Override
-      public void run() {
-        RhinoConcurrency.this.executor.apply(fn);
-      }
-    };
-    timer.scheduleAtFixedRate(_function, 1, rate);
-    this.ids.put(Integer.valueOf(id), timer);
+  public int setInterval(final Runnable fn, final int rate) {
+    int _xblockexpression = (int) 0;
+    {
+      final int id = this.idCounter.incrementAndGet();
+      final Timer timer = new Timer();
+      final TimerTask _function = new TimerTask() {
+        @Override
+        public void run() {
+          RhinoConcurrency.this.executor.apply(fn);
+        }
+      };
+      timer.scheduleAtFixedRate(_function, 1, rate);
+      this.ids.put(Integer.valueOf(id), timer);
+      _xblockexpression = id;
+    }
+    return _xblockexpression;
   }
   
   public void clear(final int id) {

@@ -14,8 +14,6 @@ final class RhinoConcurrency {
 	final AtomicInteger idCounter
 	
 	def int setTimeout(Runnable fn, int delay) {
-		
-	
 
 		val id = idCounter.incrementAndGet
 		
@@ -33,7 +31,7 @@ final class RhinoConcurrency {
 		
 	} 
 	
-	def void setInterval(Runnable fn, int rate) {
+	def int setInterval(Runnable fn, int rate) {
 		val id = idCounter.incrementAndGet
 		
 		val timer = new Timer
@@ -43,9 +41,11 @@ final class RhinoConcurrency {
 		], 1, rate)
 		
 		ids.put(id, timer)
+		
+		id
 	}
 	
-	def clear(int id) {
+	def void clear(int id) {
 		val timer = ids.get(id)
 		
 		if (timer != null) {
@@ -53,7 +53,6 @@ final class RhinoConcurrency {
 			timer.cancel
 		}
 	}
-	
 	
 	
 	new(Closure<Runnable> executor) {

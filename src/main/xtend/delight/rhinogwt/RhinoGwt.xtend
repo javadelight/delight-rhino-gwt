@@ -21,7 +21,7 @@ class RhinoGwt {
 		sandbox.inject("concurrency", new RhinoConcurrency(operationsRunner))
 		
 		// set up timers
-		sandbox.evalWithGlobalScope(RhinoGwt+"_define_environment", '''
+		sandbox.evalWithGlobalScope(RhinoGwt+"_define_environment_timer", '''
 		
 		setTimeout = function (fn,delay) {
 		    
@@ -51,7 +51,7 @@ class RhinoGwt {
 		''')
 		
 		// set up environment for GWT
-		sandbox.evalWithGlobalScope('''
+		sandbox.evalWithGlobalScope(RhinoGwt+"_define_environment_browser", '''
 			
 			var navigator = {
 				userAgent: "gecko1_8"

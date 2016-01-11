@@ -21,7 +21,7 @@ class RhinoGwt {
 		sandbox.inject("concurrency", new RhinoConcurrency(operationsRunner))
 		
 		// set up timers
-		sandbox.evalWithGlobalScope('''
+		sandbox.evalWithGlobalScope(RhinoGwt+"_define_environment", '''
 		
 		setTimeout = function (fn,delay) {
 		    

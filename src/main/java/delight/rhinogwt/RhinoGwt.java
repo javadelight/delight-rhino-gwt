@@ -10,7 +10,6 @@ public class RhinoGwt {
    */
   public static Object injectGwtRuntimeEnvironment(final RhinoSandbox sandbox, final Closure<Runnable> operationsRunner) {
     throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The method evalWithGlobalScope(String, String) is not applicable for the arguments (String)"
       + "\nInvalid number of arguments. The method evalWithGlobalScope(String, String) is not applicable for the arguments (String)");
   }
 }

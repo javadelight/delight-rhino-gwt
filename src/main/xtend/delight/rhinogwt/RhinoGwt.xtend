@@ -13,7 +13,6 @@ class RhinoGwt {
 	 */
 	static def injectGwtRuntimeEnvironment(RhinoSandbox sandbox, Closure<Runnable> operationsRunner) {
 		
-		
 		sandbox.allow(Runnable)
 		sandbox.allow(JavaAdapter)
 		

@@ -26,6 +26,6 @@ String moduleJs = // ... (get the JS of the GWT module)
 sandbox.evalWithGlobalScope(path,moduleJs);
 ```
 
-Note that the JS for the GWT module should contain the GWT app compiled into one page.
+Note that the JS for the GWT module should contain the GWT app compiled into one page. To do this, see the [GWT Simple Linker](https://github.com/javadelight/delight-gwt-simple-linker) project.
 
 

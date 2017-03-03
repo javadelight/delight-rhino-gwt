@@ -11,9 +11,9 @@ An extension to [Rhino Sandbox](https://github.com/javadelight/delight-rhino-san
 Create a new RhinoSandbox and then inject the variables required for running a GWT application.
 
 ```java
-RhinoSandbox sandbox = RhinoSandboxes.create()
+RhinoSandbox sandbox = RhinoSandboxes.create();
 	
-sandbox.useSealedScope= false
+sandbox.setUseSealedScope(false);
 				
 RhinoGwt.injectGwtRuntimeEnvironment(sandbox, new Closure<Runnable>() {
    public void apply(Runnable runnable) {

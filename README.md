@@ -21,8 +21,11 @@ RhinoGwt.injectGwtRuntimeEnvironment(sandbox, new Closure<Runnable>() {
    }
 });
 
+String moduleJs = // ... (get the JS of the GWT module)
 
-
+sandbox.evalWithGlobalScope(path,moduleJs);
 ```
+
+Note that the JS for the GWT module should contain the GWT app compiled into one page.
 
 

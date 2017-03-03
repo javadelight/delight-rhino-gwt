@@ -4,7 +4,7 @@
 
 Allows running GWT applications with [Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino).
 
-An extension to [Rhino Sandbox]().
+An extension to [Rhino Sandbox](https://github.com/javadelight/delight-rhino-sandbox).
 
 ## Usage
 
@@ -15,7 +15,7 @@ sandbox.useSealedScope= false
 				
 RhinoGwt.injectGwtRuntimeEnvironment(sandbox, new Closure<Runnable>() {
    public void apply(Runnable runnable) {
-     
+     new Thread(runnable).start();
    }
 })
 ```

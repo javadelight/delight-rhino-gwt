@@ -48,7 +48,7 @@ final class RhinoConcurrency {
 	def void clear(int id) {
 		val timer = ids.get(id)
 		
-		if (timer != null) {
+		if (timer !== null) {
 			ids.remove(id)
 			timer.cancel
 		}

@@ -1,6 +1,5 @@
 package delight.rhinogwt.internal;
 
-import com.google.common.base.Objects;
 import delight.functional.Closure;
 import java.util.HashMap;
 import java.util.Timer;
@@ -54,8 +53,7 @@ public final class RhinoConcurrency {
   
   public void clear(final int id) {
     final Timer timer = this.ids.get(Integer.valueOf(id));
-    boolean _notEquals = (!Objects.equal(timer, null));
-    if (_notEquals) {
+    if ((timer != null)) {
       this.ids.remove(Integer.valueOf(id));
       timer.cancel();
     }

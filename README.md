@@ -8,6 +8,8 @@ An extension to [Rhino Sandbox](https://github.com/javadelight/delight-rhino-san
 
 ## Usage
 
+Create a new RhinoSandbox and then inject the variables required for running a GWT application.
+
 ```java
 RhinoSandbox sandbox = RhinoSandboxes.create()
 	

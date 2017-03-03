@@ -2,4 +2,10 @@
 
 # Rhino GWT
 
-Utilities to run GWT applications with Rhino.
+Allows running GWT applications with [Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino).
+
+## Usage
+
+
+
+

@@ -19,7 +19,10 @@ RhinoGwt.injectGwtRuntimeEnvironment(sandbox, new Closure<Runnable>() {
    public void apply(Runnable runnable) {
      new Thread(runnable).start();
    }
-})
+});
+
+
+
 ```
 
 
